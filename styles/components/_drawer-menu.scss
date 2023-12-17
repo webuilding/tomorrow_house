@@ -1,0 +1,104 @@
+.drawer-menu {
+  $drawer-menu-item-height: 36px;
+  $drawer-menu-list-padding: 8px;
+  $community-length: 8;
+  $store-length: 9;
+  $expert-length: 2;
+
+  &.is-active {
+    .drawer-menu-button {
+      color: $blue;
+    }
+  }
+
+  &.is-open {
+    &.is-community {
+      .drawer-menu-content {
+        max-height: $drawer-menu-item-height * $community-length +
+          $drawer-menu-list-padding;
+      }
+    }
+
+    &.is-store {
+      .drawer-menu-content {
+        max-height: $drawer-menu-item-height * $store-length +
+          $drawer-menu-list-padding;
+      }
+    }
+
+    &.is-expert {
+      .drawer-menu-content {
+        max-height: $drawer-menu-item-height * $expert-length +
+          $drawer-menu-list-padding;
+      }
+    }
+
+    .drawer-menu-button .ic-chevron {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    .drawer-menu-content {
+      max-height: $drawer-menu-item-height * $community-length +
+        $drawer-menu-list-padding;
+    }
+
+    .drawer-menu-list {
+      margin-bottom: $drawer-menu-list-padding;
+    }
+  }
+
+  &-button {
+    @include flexbox(start);
+    @include text-style(18, $primary);
+    width: 100%;
+    height: 54px;
+    padding: 0 8px;
+    position: relative;
+    font-weight: 700;
+    transition: color 200ms ease-in-out;
+
+    i {
+      &:first-child {
+        font-size: 24px;
+        color: $primary;
+        margin-right: 8px;
+      }
+
+      &:last-child {
+        @include pos-center-y;
+        font-size: 16px;
+        right: 1px;
+        color: $primary;
+        transition: transform 200ms ease-in-out;
+      }
+    }
+  }
+
+  &-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 200ms ease-in-out;
+  }
+
+  &-item {
+    &.is-active {
+      a {
+        color: $blue;
+      }
+    }
+
+    a {
+      @include flexbox(start);
+      @include text-style(14, $primary);
+      font-weight: 700;
+      width: 100%;
+      height: 36px;
+      padding: 0 12px;
+    }
+
+    .ic-new {
+      font-size: 16px;
+      color: $red;
+    }
+  }
+}
